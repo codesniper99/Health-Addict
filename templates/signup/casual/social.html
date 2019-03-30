@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="section">
+            <h5 class="center-align grey-text text-darken-1">Connect Social Accounts</h5>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <ul class="progressbar">
+                <li class="active" style="width:20%;">User</li>
+                <li class="active" style="width:20%;">Profile</li>
+                <li class="active" style="width:20%;">Skills</li>
+                <li class="active" style="width:20%;">Account</li>
+                <li style="width:20%;">Connect Social</li>
+            </ul>
+        </div>
+        <div class="row" style="margin-top:10%;">
+            <a href="{% url 'signup_men_complete' %}">Next</a>
+        </div>
+        <!--<div class="section">-->
+            <!--<h6>Already a user? <a href="{% url 'login' %}">Login</a></h6>-->
+        <!--</div>-->
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('textarea#id_bio').characterCounter();
+            $('.datepicker').datepicker({
+                format:'yyyy-mm-dd',
+                yearRange:40,
+                showMonthAfterYear:true,
+                showDaysInNextAndPreviousMonths:true,
+                showClearBtn:true,
+                defaultDate:'1980-01-01',
+            });
+            {% if request.user.date_of_birth %}
+                var elem = document.querySelector('.datepicker');
+                var instance = M.Datepicker.getInstance(elem);
+                instance.setDate(new Date("{{ request.user.date_of_birth|date:'Y-m-d' }}"));
+                instance.gotoDate(new Date("{{ request.user.date_of_birth|date:'Y-m-d' }}"));
+                d = document.getElementById('id_date_of_birth');
+                d.value = "{{ request.user.date_of_birth|date:'Y-m-d' }}";
+            {% endif %}
+        });
+    </script>
+
+{% endblock %}

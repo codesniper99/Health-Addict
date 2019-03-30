@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="section">
+            <h5 class="center-align grey-text text-darken-1">Verbal Ability Test</h5>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <ul class="progressbar">
+                <li class="active" style="width:16%;">User</li>
+                <li class="active" style="width:16%;">Profile</li>
+                <li class="active" style="width:16%;">Personality Test</li>
+                <li class="active" style="width:16%;">IQ Test</li>
+                <li style="width:16%;">Verbal Ability Test</li>
+                <li style="width:16%;">Connect Social</li>
+            </ul>
+        </div>
+        <div class="container">
+            <br><br><br>
+            <div class="row">
+            <br><br><br>
+                <div class="center-align">
+                    <a class="btn waves-effect waves-light"
+                       href="{% url 'signup_trn_vat_test' test_pk=test_pk %}" style="margin-right:10px;">Start Test</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,434 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.sidenav-trigger {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
+
+a {
+   outline: 0;
+}
+
+.breadcrumb:before {
+    color: #bdbdbd;
+}
+.breadcrumb, .breadcrumb:last-child {
+   color: #00ff00;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #bdbdbd;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #bdbdbd;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #bdbdbd;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #bdbdbd;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #bdbdbd;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    #bdbdbd;
+}
+
+#toast-container {
+  top: 12%;
+  right: auto !important;
+  bottom: auto !important;
+  left:5%;
+}
+
+.notification-container {
+    position: relative;
+    i {
+        color: #fff;
+    }
+}
+
+.notification-counter {
+    position: absolute;
+    top: 22px;
+    left: 32px;
+
+    background-color: rgba(212, 19, 13, 1);
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 3px;
+    font: 8px Verdana;
+}
+
+.tabs .tab a{
+    color:grey;
+} /*Black color to the text*/
+
+.tabs .tab a:hover {
+    color:black;
+} /*Text color on hover*/
+
+.tabs .tab a.active {
+    color:black;
+} /*Background and text color when a tab is active*/
+
+.tabs .indicator {
+    background-color:orange;
+} /*Color of underline*/
+
+
+/*  ---------------------------------------------------------   ON - OFF SWITCH     -------------------------------*/
+
+    .onoffswitch {
+        position: relative; width: 130px;
+        -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    .onoffswitch-checkbox {
+        display: none;
+    }
+    .onoffswitch-label {
+        display: block; overflow: hidden; cursor: pointer;
+        border: 2px solid #999999; border-radius: 20px;
+    }
+    .onoffswitch-inner {
+        display: block; width: 200%; margin-left: -100%;
+        transition: margin 0.3s ease-in 0s;
+    }
+    .onoffswitch-inner:before, .onoffswitch-inner:after {
+        display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+        font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+        box-sizing: border-box;
+    }
+    .onoffswitch-inner:before {
+        content: "Connected";
+        padding-left: 20px;
+        background-color: #81EB50; color: #FFFFFF;
+    }
+    .onoffswitch-inner:after {
+        content: "Connect";
+        padding-right: 20px;
+        background-color: #EEEEEE; color: #999999;
+        text-align: right;
+    }
+    .onoffswitch-switch {
+        display: block; width: 12px; margin: 9px;
+        background: #FFFFFF;
+        position: absolute; top: 0; bottom: 0;
+        right: 96px;
+        border: 2px solid #999999; border-radius: 20px;
+        transition: all 0.3s ease-in 0s;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+        margin-left: 0;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+        right: 0px;
+    }
+
+/*  --------------------------------------------------------------------------------------  */
+
+
+blockquote{
+  margin: 0px;
+  padding-left: 1.5rem;
+  border-left: 3px solid orange;
+}
+
+/*  PUSH PIN   */
+/*  Class for when element is above threshold   */
+.pin-top {
+    position: relative;
+}
+
+/*  Class for when element is below threshold   */
+.pin-bottom {
+    position: relative;
+}
+
+/*  Class for when element is pinned    */
+.pinned {
+    position: fixed !important;
+    width: 15%;
+}
+
+.table-of-contents a {
+  color: #212121;
+}
+
+.table-of-contents a:hover {
+  border-left: 1px solid #f57c00; !important
+}
+
+.table-of-contents a.active {
+  border-left: 2px solid #f57c00; !important
+}
+
+/*  ---------   Gauge Meter ------------  */
+
+#chart {
+    width: 100px;
+    margin: 0 auto;
+}
+.gauge .background {
+    fill: #ddd;
+}
+.gauge .value {
+    fill: #777;
+    font-size: 1.5rem;
+}
+.gauge .value tspan {
+    font-size: 1rem;
+}
+.gauge .scale text {
+    fill: #999;
+    font-size: 0.75rem;
+}
+
+/*  -----------------------    Animated Striped Progress Bar    ------------------  */
+
+.progress {
+    overflow: hidden;
+    height: 18px;
+    margin-bottom: 18px;
+    background-color: #89949B;
+    background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: -ms-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#f9f9f9', GradientType=0);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.progress .bar {
+    width: 0%;
+    height: 18px;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #0e90d2;
+    background-image: -moz-linear-gradient(top, #149bdf, #0480be);
+    background-image: -ms-linear-gradient(top, #149bdf, #0480be);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));
+    background-image: -webkit-linear-gradient(top, #149bdf, #0480be);
+    background-image: -o-linear-gradient(top, #149bdf, #0480be);
+    background-image: linear-gradient(top, #149bdf, #0480be);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#149bdf', endColorstr='#0480be', GradientType=0);
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: width 0.6s ease;
+    -moz-transition: width 0.6s ease;
+    -ms-transition: width 0.6s ease;
+    -o-transition: width 0.6s ease;
+    transition: width 0.6s ease;
+}
+.progress-striped .bar {
+    background-color: #89949B;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    -webkit-background-size: 40px 40px;
+    -moz-background-size: 40px 40px;
+    -o-background-size: 40px 40px;
+    background-size: 40px 40px;
+}
+.progress.active .bar {
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -moz-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
+}
+.progress-danger .bar {
+    background-color: #89949B;
+    background-image: -moz-linear-gradient(top, #89949B, #c43c35);
+    background-image: -ms-linear-gradient(top, #89949B, #c43c35);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#c43c35));
+    background-image: -webkit-linear-gradient(top, #ee5f5b, #c43c35);
+    background-image: -o-linear-gradient(top, #89949B, #c43c35);
+    background-image: linear-gradient(top, #89949B, #c43c35);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#c43c35', GradientType=0);
+}
+.progress-danger.progress-striped .bar {
+    background-color: #1ABC9C;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+}
+@-webkit-keyframes progress-bar-stripes {
+    from { background-position: 0 0 }
+    to { background-position: 40px 0 }
+}
+@-moz-keyframes progress-bar-stripes {
+    from { background-position: 0 0 }
+    to { background-position: 40px 0 }
+}
+@keyframes progress-bar-stripes {
+    from { background-position: 0 0 }
+    to { background-position: 40px 0 }
+}
+
+
+/*  ------------    Alert Messages  --------  */
+
+.alert {
+    padding: 20px;
+    background-color: #ef5350;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+}
+
+.alert.success {background-color: #4caf50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+
+/*  ---------------   Step Progress Bar    ------------------------ */
+
+  .progressbar {
+      counter-reset: step;
+  }
+  .progressbar li {
+      list-style-type: none;
+      width: 25%;
+      float: left;
+      font-size: 12px;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      color: #7d7d7d;
+  }
+  .progressbar li:before {
+      width: 30px;
+      height: 30px;
+      content: counter(step);
+      counter-increment: step;
+      line-height: 25px;
+      border: 2px solid #7d7d7d;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+      background-color: white;
+  }
+  .progressbar li:after {
+      width: 100%;
+      height: 2px;
+      content: '';
+      position: absolute;
+      background-color: #7d7d7d;
+      top: 15px;
+      left: -50%;
+      z-index: -1;
+  }
+  .progressbar li:first-child:after {
+      content: none;
+  }
+  .progressbar li.active {
+      color: #4caf50;
+  }
+  .progressbar li.active:before {
+      border-color: #4caf50;
+  }
+  .progressbar li.active + li:after {
+      background-color: #4caf50;
+  }

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+        <Title>
+            {% block custom_title %}
+            {% endblock %}
+        </Title>
+        <!--Materialize Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Materialize CSS-->
+        <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}" media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" media="screen,projection"/>
+        <!--Star Rating CSS and JS-->
+        <link type="text/css" rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+        <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+        <!--Gauge Meter CSS and JS-->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+
+        {% block custom_head %}
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        <header>
+            <!--Fixed Navbar-->
+            <div class="navbar-fixed">
+                <nav class="top-nav grey darken-4">
+                    {% if user.is_authenticated %}
+                        <a href="#" data-target="dashboard-nav" style="margin-left:20px;"
+                           class="sidenav-trigger show-on-large hide-on-med-and-down">
+                            <i class="material-icons white-text">menu</i>
+                        </a>
+                    {% endif %}
+                    <div class="nav-wrapper container">
+                        <a href="{% url 'home' %}" class="brand-logo white-text">Health Addict</a>
+                        <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+                            <i class="material-icons white-text">menu</i>
+                        </a>
+                        {% if user.is_authenticated %}
+                            <ul class="right">
+                                <li class="notification-container">
+                                    <a href="#" data-target="notification-sidenav" class="sidenav-trigger show-on-large"
+                                        style="margin:0px;">
+                                        <i class="material-icons left white-text">notifications</i>
+                                        <span class="notification-counter" id="notification-count" hidden>1</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                        <ul class="right hide-on-med-and-down">
+                            {% if user.is_authenticated %}
+                                <li style="padding-right:10px;">Signed in as
+                                    <span class="light-green-text text-accent-2"> {{ user }} </span>
+                                </li>
+                                <li><a href="{% url 'dashboard' %}" class="white-text">Dashboard</a></li>
+                                <li><a href="#" class="dropdown-trigger white-text" data-target='account-menu'>
+                                        <i class="material-icons right">account_circle</i>Account
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li style="padding-right:10px;">Welcome Guest</li>
+                                <li><a href="{% url 'login' %}" class="white-text">Login</a></li>
+                                <li><a href="{% url 'signup' %}" class="white-text">Signup</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <!--Mobile Collabsible SideNav-->
+            <ul class="sidenav" id="mobile-nav">
+                <li>
+                    <div class="user-view" style="text-align:center;">
+                        <img src="{% static 'img/ICTS_logo.jpg' %}" width="200" style="padding:20px;">
+                    </div>
+                </li>
+                <li><div class="divider"></div></li>
+                {% if user.is_authenticated %}
+                    <li><a class="waves-effect" href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li><div class="divider"></div></li>
+                    <li><a class="subheader orange-text">Signed in as
+                        <span class="light-green-text text-accent-4">{{ user }}</span></a>
+                    </li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'profile_settings' %}">Settings</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <br><br><br>
+                {% else %}
+                    <li><a class="subheader black-text">Welcome, Guest</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+            <!--Dashboard Collabsible SideNav-->
+            <ul class="sidenav" id="dashboard-nav" style="margin-top:64px;">
+                <li>
+                    <div class="user-view" style="text-align:center;">
+                        <img src="{% static 'img/ICTS_logo.jpg' %}" width="200" style="padding:20px;">
+                    </div>
+                </li>
+                <li><div class="divider"></div></li>
+                <li><a class="waves-effect" href="{% url 'dashboard' %}">Dashboard</a></li>
+                </ul>
+            {% if user.is_authenticated %}
+                <!--Notification Collabsible Sidenav-->
+                <ul class="sidenav" id="notification-sidenav" style="padding:20px;">
+                    <li onclick="closeNotificationSidenav()">
+                        <i style="cursor:pointer;" class="material-icons right">close</i>
+                    </li>
+                    <li><h6 align="center">Notifications</h6></li>
+                    <li class="divider"></li>
+                    <br>
+                    <li><a class="subheader" style="text-align:center">No notifications to show</a></li>
+                </ul>
+            {% endif %}
+
+            {% block custom_header %}
+            {% endblock %}
+
+        </header>
+
+        <!--Account Menu List-->
+        <ul id='account-menu' class='dropdown-content'>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+            <li><a href="{% url 'profile_settings' %}">Settings</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+
+        <main>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}" style="padding-left:8%; padding-right:5%;">
+                        <span class="closebtn">&times;</span>
+                        <span>{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block main %}
+            {% endblock %}
+        </main>
+
+        <!--Sticky Footer-->
+        <footer class="page-footer grey darken-4" style="margin-top:90px; z-index:10;">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h5 class="white-text">About HealthAddict</h5>
+                        <p class="grey-text text-lighten-4">
+                            HealthAddict was developed keeping in mind the crippling effects addiction has on the common man. Particularly, Chain-smokers. India is the <b>4th Largest consumer</b> of Tobacco worldwide. Our aim is to help the hopeful regain control of their lives and purify their body and immediate environment.      
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s6">
+                            Copyright © 2018
+                            <a class="amber-text" href="https://healthaddict.com/">Health Addict</a>
+                        </div>
+                        <div class="col s6">
+                            Developed by : &nbsp;
+                            <a class="amber-text" href="https://github.com/codesniper99">@akhil_vaid</a>&nbsp;
+                            <a class="amber-text" href="https://github.com/vaibhavshrm46"> @vaibhavshrm46</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/init.js' %}"></script>
+        <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+            }
+            setTimeout(function(){
+                for (i = 0; i < close.length; i++) {
+                    close[i].click();
+                }
+            }, 10000);
+        </script>
+
+        {% block custom_script %}
+        {% endblock %}
+
+    </body>
+
+</html>

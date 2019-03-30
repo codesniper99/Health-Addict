@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="section">
+        <h5 class="center-align grey-text text-darken-1">Signup</h5>
+    </div>
+    <div class="divider"></div>
+    <br>
+    <!--<nav class="transparent z-depth-0">-->
+        <!--<a href="{% url 'signup_user' %}" class="breadcrumb grey-text">User</a>-->
+    <!--</nav>-->
+    <!--<br><br>-->
+    <!--<div class="row">-->
+        <!--<form class="col s12" method="post" action="{% url 'signup_user' %}">-->
+            <!--{% csrf_token %}-->
+            <!--{% include 'form_snippet.html' with form=userform %}-->
+            <!--<br>-->
+            <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+            <!--<div class="g-recaptcha" data-sitekey="6LfaIUAUAAAAAN0RuaBLlZpuCVHX7mtWeVDobCCa"></div>-->
+            <!--<br>-->
+            <!--<div class="center-align">-->
+                <!--<button class="btn waves-effect waves-light" type="submit" name="action">-->
+                    <!--Next<i class="material-icons right">keyboard_arrow_right</i>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</form>-->
+    <!--</div>-->
+    <a href="{% url 'social:begin' 'github' %}?next={% url 'signup_user' %}">Login with GitHub</a>
+    <br>
+
+    <div class="section">
+        <h6>Already a user? <a href="{% url 'login' %}">Login</a></h6>
+    </div>
+
+{% endblock %}

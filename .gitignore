@@ -1,0 +1,19 @@
+*.pyc
+*~
+__ pycache __
+db.sqlite3
+/media
+/static
+.DS_Store
+.idea/
+.vscode/
+
+
+# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+!.elasticbeanstalk/*.cfg.yml
+
+!.elasticbeanstalk/*.global.yml
+

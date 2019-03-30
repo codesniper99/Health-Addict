@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block custom_title %}
+    Health Addict
+{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="section">
+            <h5 class="center-align grey-text text-darken-1">Signup</h5>
+        </div>
+        <div class="divider"></div>
+        <br>
+        <div class="section">
+            <h5 class="center-align">Register as</h5>
+            <br>
+            <div class="row center-align">
+                <a class="waves-effect waves-light btn" href="{% url 'signup_casual_user' %}">Casual smoker</a>
+                <a class="waves-effect waves-light btn" href="{% url 'signup_intermediate_user' %}">Intermediate Smoker</a>
+                <a class="waves-effect waves-light btn" href="{% url 'signup_extreme_user' %}">Extreme smoker</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block custom_script %}
+{% endblock %}

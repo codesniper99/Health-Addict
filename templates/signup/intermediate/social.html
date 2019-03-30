@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="section">
+            <h5 class="center-align grey-text text-darken-1">Connect Social Accounts</h5>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <ul class="progressbar">
+                <li class="active" style="width:16%;">User</li>
+                <li class="active" style="width:16%;">Profile</li>
+                <li class="active" style="width:16%;">Personality Test</li>
+                <li class="active" style="width:16%;">IQ Test</li>
+                <li class="active" style="width:16%;">Verbal Ability Test</li>
+                <li style="width:16%;">Connect Social</li>
+            </ul>
+        </div>
+        <div class="container">
+            <br><br><br>
+            <div class="row">
+            <br><br><br>
+            <a href="{% url 'signup_trn_complete' %}">Next</a>
+        </div>
+    </div>
+
+{% endblock %}

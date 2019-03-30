@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block custom_title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="section">
+            <ul class="collapsible popout">
+                <li class="active">
+                    <div class="collapsible-header">
+                        <span class="red" style="width:30px; height:30px; border-radius:50%; margin-right:15px;">
+                            <i class="material-icons white-text" style="margin-top:3px;">group</i>
+                        </span>Motivational Quotes
+                     <div>
+                            <br><br>
+                        <a class="right waves-effect grey-text text-darken-2" href="{% url 'motivational_quote' %}" >
+                            Click for a Quote 
+                        </a>
+                     </div>
+                    
+                    </div>
+                   </li>
+                <li>
+                    <div class="collapsible-header">
+                        <span class="pink" style="width:30px; height:30px; border-radius:50%; margin-right:15px;">
+                            <i class="material-icons white-text" style="margin-top:3px;">thumbs_up_down</i>
+                        </span>My Progress
+                    </div>
+                    <div class="collapsible-body">
+                       
+                          
+                               
+                                <a class="right waves-effect grey-text text-darken-2"  >
+                                    View Progress
+                                </a>
+                          
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <span class="blue" style="width:30px; height:30px; border-radius:50%; margin-right:15px;">
+                            <i class="material-icons white-text" style="margin-top:3px;">group</i>
+                        </span>HelpLines
+                    </div>
+                    <div class="collapsible-body">
+                        <p>
+                            <i>Inserting HelpLines</i>
+
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+    <script type="text/javascript">
+        $('#li_dashboard').addClass('active');
+        $('.collapsible').collapsible();
+    </script>
+{% endblock %}

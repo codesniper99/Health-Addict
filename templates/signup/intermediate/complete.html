@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block custom_head %}
+    <!--<meta http-equiv="refresh" content="5;url={% url 'dashboard' %}">-->
+{% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="section">
+            <h5 class="center-align green-text">Profile Completed</h5>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <ul class="progressbar">
+                <li class="active" style="width:20%;">User</li>
+                <li class="active" style="width:20%;">Profile</li>
+                <li class="active" style="width:20%;">Personality Test</li>
+                <li class="active" style="width:20%;">IQ Test</li>
+                <li class="active" style="width:20%;">Verbal Ability Test</li>
+            </ul>
+        </div>
+        <br><br><br><br>
+        <p style="text-align: center; color: #2b2b2b;">
+            You will be redirected in <time><b id="seconds">5</b> seconds</time>.
+        </p>
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+    <script type="text/javascript">
+        var el = document.getElementById('seconds'),
+        total = el.innerHTML,
+        timeinterval = setInterval(function () {
+            total = --total;
+            window.requestAnimationFrame(function () {
+                el.textContent = total;
+                if (total <= 0) {
+                    clearInterval(timeinterval);
+                    window.location.replace("{% url 'dashboard' %}");
+                }
+            });
+        }, 1000);
+    </script>
+
+{% endblock %}

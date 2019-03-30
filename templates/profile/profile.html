@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block main %}
+
+    <div class="container">
+        <div style="padding-top:3%;">
+            <div class="row" style="margin-bottom:0px;">
+                <div class="col s4">
+                    <img src="{{ user.profile_picture.url }}" width="200px;" height="200px;">
+                    <h5>{{ user.get_full_name }}</h5>
+                    <h6 class="grey-text text-darken-1">{{ user }}</h6>
+
+                </div>
+                <div class="col s8">
+                    <ul class="tabs tabs-fixed-width">
+                        <li class="tab"><a href="#tab_overview" >Overview</a></li>
+                        <li class="tab"><a href="#tab_activity">Activity</a></li>
+                        <li class="tab"><a href="#tab_social">Social Accounts</a></li>
+                    </ul>
+                    <br>
+                    <div class="container" id="tab_overview">
+                        <div class="row valign-wrapper">
+                            <span style="font-size:20px; margin-right:20px;">Profile Score : </span>
+                            <i class="material-icons teal-text">grade</i>
+                            <span style="font-size:20px;">{{ score }}</span>
+                        </div>
+                        <div class="row">
+                            <span style="font-size:18px;">
+                                Questions asked : &nbsp;  {{ queries|length }}
+                            </span><br>
+                            <span style="font-size:18px;">
+                                Answers given : &nbsp;  {{ answers|length }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="container" id="tab_activity" style="padding-top:1%;">
+                        <h6 class="grey-text text-darken-2">Your Questions</h6>
+                        <div class="divider"></div>
+                        {% if queries %}
+                            <ol>
+                                {% for query in queries %}
+                                    <li><a href="{% url 'query_detail' query.pk %}">{{ query }}</a></li>
+
+                                {% endfor %}
+                            </ol>
+                        {% else %}
+                            <p class="grey-text">No questions asked</p>
+                        {% endif %}
+                        <br>
+                        <h6 class="grey-text text-darken-2">Your Answers</h6>
+                        <div class="divider"></div>
+                        {% if answers %}
+                            <ol>
+                                {% for answer in answers %}
+                                    <li><a href="{% url 'query_detail' answer.query.pk %}">
+                                        {{ answer.answer_text|truncatewords:10 }}
+                                    </a></li>
+
+                                {% endfor %}
+                            </ol>
+                        {% else %}
+                            <p class="grey-text">No answers given</p>
+                        {% endif %}
+                        <br>
+                    </div>
+                    <div class="container" id="tab_social" style="padding-top:1%;">
+                        <div class="section"><h6 align="center">Connect Social Accounts</h6></div>
+                        <div class="row valign-wrapper" style="margin-top:20px; margin-bottom:20px;">
+                            <div style="height:50px; width:150px; text-align:center; border:1px solid black">
+                                <img src="{% static 'img/github.jpg' %}" height="45px;">
+                            </div>
+                            <div class="onoffswitch" style="margin-left:50px;">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="github_onoffswitch">
+                                <label class="onoffswitch-label" for="github_onoffswitch">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row valign-wrapper">
+                            <div style="height:50px; width:150px; text-align:center; border:1px solid black">
+                                <img src="{% static 'img/linkedin.jpg' %}" height="45px;">
+                            </div>
+                            <div class="onoffswitch" style="margin-left:50px;">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="linkedin_onoffswitch">
+                                <label class="onoffswitch-label" for="linkedin_onoffswitch">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row valign-wrapper">
+                            <div style="height:50px; width:150px; text-align:center; border:1px solid black">
+                                <img src="{% static 'img/stackoverflow.jpg' %}" height="40px;">
+                            </div>
+                            <div class="onoffswitch" style="margin-left:50px;">
+                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="stackoverflow_onoffswitch">
+                                <label class="onoffswitch-label" for="stackoverflow_onoffswitch">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.tabs').tabs();
+        });
+    </script>
+
+{% endblock %}

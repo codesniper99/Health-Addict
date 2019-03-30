@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block custom_title %}
+    Test
+{% endblock %}
+
+{% block main %}
+    <div class="container" style="padding-top:50px;">
+        <div class="section">
+            <h5 class="center-align grey-text text-darken-1">Create Questionnaire</h5>
+        </div>
+        <br>
+        <div class="row">
+            <form class="col s12" method="post" action="{% url 'questionnaire_new' %}">
+                {% csrf_token %}
+                {% include 'form_snippet.html' with form=form %}
+                <br>
+                <div class="center-align">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+                </div>
+            </form>
+        </div>
+        <!-- Modal Trigger -->
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal_new_question">Add Question</a>
+        <!-- Modal Structure -->
+        <div id="modal_new_question" class="modal">
+            <div class="modal-content">
+
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+{% endblock %}
+
+

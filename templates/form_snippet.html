@@ -1,0 +1,27 @@
+{% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+        <p style="color:red;" class="error-message">{{ error|escape }}</p>
+    {% endfor %}
+{% endif %}
+
+{% for field in form %}
+
+    <div class="row">
+        <div class="input-field col s12">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <p style="margin-top:0; color:black" class="error-message"><i>{{ error|escape }}</i></p>
+                {% endfor %}
+            {% endif %}
+            {% if field.help_text %}
+                <div style="float:right;">
+                    <p class="help">{{ field.help_text|safe }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endfor %}
+

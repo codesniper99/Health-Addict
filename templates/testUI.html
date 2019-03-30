@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block custom_head %}
+
+    <style>
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #006064;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 90px;
+            margin-top:60px;
+        }
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 20px;
+            font-color: white;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            color: #eceff1;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        @media screen and (max-height: 450px) {
+            .sidebar {padding-top: 15px;}
+            .sidebar a {font-size: 18px;}
+        }
+        .collapsible-header, .collapsible-body, .collapsible, ul.collapsible>li {
+            border: 0!important;
+            box-shadow: none!important;
+        }
+        .collapsible-body {
+            padding-top:0px;
+            padding-bottom:0px;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block custom_header %}
+
+    <div class="navbar-fixed">
+        <nav class="cyan darken-4">
+            <div class="nav-wrapper">
+                <div class="valign-wrapper">
+                    <i class="material-icons" style="cursor:pointer; margin-left:20px;" onclick="toggle()">menu</i>
+                    <h6 class="center white-text" style="margin-left:40%; margin-top:5px;">Lorem ipsum dolor sit amet</h6>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+{% endblock %}
+
+{% block main %}
+
+    <div id="course-sidenav" class="sidebar" style="width:270px;">
+        <ul class="collapsible cyan darken-4">
+            <li>
+                <div class="collapsible-header cyan darken-4 white-text">
+                    <a class="white-text">First</a>
+                </div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li><a>First</a></li>
+                        <li><a>First</a></li>
+                        <li><a>First</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header cyan darken-4 white-text"><a>First</a></div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header cyan darken-4 white-text">Third</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+        </ul>
+    </div>
+    <div class="container" id="content" style="margin-left:370px; margin-top:50px;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales velit ex, in feugiat ligula suscipit sed. Phasellus dictum fringilla arcu sed placerat. Aliquam accumsan elit ac libero elementum blandit. Pellentesque vel libero in dui auctor sodales quis sed leo. Aenean mattis purus vel ante mattis luctus. Vestibulum consectetur diam in fermentum tempor. Nulla feugiat mauris at dolor accumsan lobortis. Donec rutrum vulputate odio, sit amet interdum erat vulputate vitae. Nullam non ipsum finibus, euismod eros nec, consequat tellus. In dui risus, sagittis eu tortor in, blandit lobortis nisl. Integer sed urna non odio tristique lacinia a vitae dolor.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales velit ex, in feugiat ligula suscipit sed. Phasellus dictum fringilla arcu sed placerat. Aliquam accumsan elit ac libero elementum blandit. Pellentesque vel libero in dui auctor sodales quis sed leo. Aenean mattis purus vel ante mattis luctus. Vestibulum consectetur diam in fermentum tempor. Nulla feugiat mauris at dolor accumsan lobortis. Donec rutrum vulputate odio, sit amet interdum erat vulputate vitae. Nullam non ipsum finibus, euismod eros nec, consequat tellus. In dui risus, sagittis eu tortor in, blandit lobortis nisl. Integer sed urna non odio tristique lacinia a vitae dolor.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales velit ex, in feugiat ligula suscipit sed. Phasellus dictum fringilla arcu sed placerat. Aliquam accumsan elit ac libero elementum blandit. Pellentesque vel libero in dui auctor sodales quis sed leo. Aenean mattis purus vel ante mattis luctus. Vestibulum consectetur diam in fermentum tempor. Nulla feugiat mauris at dolor accumsan lobortis. Donec rutrum vulputate odio, sit amet interdum erat vulputate vitae. Nullam non ipsum finibus, euismod eros nec, consequat tellus. In dui risus, sagittis eu tortor in, blandit lobortis nisl. Integer sed urna non odio tristique lacinia a vitae dolor.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales velit ex, in feugiat ligula suscipit sed. Phasellus dictum fringilla arcu sed placerat. Aliquam accumsan elit ac libero elementum blandit. Pellentesque vel libero in dui auctor sodales quis sed leo. Aenean mattis purus vel ante mattis luctus. Vestibulum consectetur diam in fermentum tempor. Nulla feugiat mauris at dolor accumsan lobortis. Donec rutrum vulputate odio, sit amet interdum erat vulputate vitae. Nullam non ipsum finibus, euismod eros nec, consequat tellus. In dui risus, sagittis eu tortor in, blandit lobortis nisl. Integer sed urna non odio tristique lacinia a vitae dolor.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales velit ex, in feugiat ligula suscipit sed. Phasellus dictum fringilla arcu sed placerat. Aliquam accumsan elit ac libero elementum blandit. Pellentesque vel libero in dui auctor sodales quis sed leo. Aenean mattis purus vel ante mattis luctus. Vestibulum consectetur diam in fermentum tempor. Nulla feugiat mauris at dolor accumsan lobortis. Donec rutrum vulputate odio, sit amet interdum erat vulputate vitae. Nullam non ipsum finibus, euismod eros nec, consequat tellus. In dui risus, sagittis eu tortor in, blandit lobortis nisl. Integer sed urna non odio tristique lacinia a vitae dolor.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales velit ex, in feugiat ligula suscipit sed. Phasellus dictum fringilla arcu sed placerat. Aliquam accumsan elit ac libero elementum blandit. Pellentesque vel libero in dui auctor sodales quis sed leo. Aenean mattis purus vel ante mattis luctus. Vestibulum consectetur diam in fermentum tempor. Nulla feugiat mauris at dolor accumsan lobortis. Donec rutrum vulputate odio, sit amet interdum erat vulputate vitae. Nullam non ipsum finibus, euismod eros nec, consequat tellus. In dui risus, sagittis eu tortor in, blandit lobortis nisl. Integer sed urna non odio tristique lacinia a vitae dolor.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales velit ex, in feugiat ligula suscipit sed. Phasellus dictum fringilla arcu sed placerat. Aliquam accumsan elit ac libero elementum blandit. Pellentesque vel libero in dui auctor sodales quis sed leo. Aenean mattis purus vel ante mattis luctus. Vestibulum consectetur diam in fermentum tempor. Nulla feugiat mauris at dolor accumsan lobortis. Donec rutrum vulputate odio, sit amet interdum erat vulputate vitae. Nullam non ipsum finibus, euismod eros nec, consequat tellus. In dui risus, sagittis eu tortor in, blandit lobortis nisl. Integer sed urna non odio tristique lacinia a vitae dolor.</p>
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
+        });
+        x = document.getElementById("course-sidenav");
+        y = document.getElementById("content");
+        function toggle() {
+            if ( x.style.width == "0px" ) {
+                x.style.width = "270px";
+                y.style.marginLeft = "370px";
+            }
+            else {
+                x.style.width = "0px";
+                y.style.marginLeft = "100px";
+            }
+        }
+        function closeNav() {
+            x.style.width = "0px";
+            y.style.marginLeft = "100px";
+        }
+    </script>
+
+
+{% endblock %}

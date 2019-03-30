@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="container" style="padding-top:1%;">
+        <div class="row">
+            <div class="col s3">
+                <div class="collection with-header">
+                    <li class="collection-header grey lighten-4 grey-text text-darken-3"><b>Settings</b></li>
+                    <a class="collection-item" href="{% url 'profile_settings' %}">Profile</a>
+                    <a class="collection-item" href="{% url 'account_settings' %}">Account</a>
+                    <a class="collection-item" href="{% url 'email_settings' %}">Email</a>
+                    <a class="collection-item" href="{% url 'notification_settings' %}">Notification</a>
+                </div>
+            </div>
+            <div class="col s9">
+                {% block setting_content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

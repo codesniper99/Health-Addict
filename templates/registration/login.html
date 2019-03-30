@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    {% if next %}
+        <div class="alert warning" style="padding-left:8%; padding-right:5%;">
+            <span class="closebtn">&times;</span>
+            <span>Please login to continue</span>
+        </div>
+    {% endif %}
+    <div class="container">
+        <div class="section">
+            <h5 class="center-align grey-text text-darken-1">Login</h5>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                {% if next %}
+                    <form class="col s12" method="post" action="/login/?next={{next}}">
+                        {% csrf_token %}
+                        {% include 'form_snippet.html' with form=form %}
+                        <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+                        <!--<div class="g-recaptcha" data-sitekey="6LfaIUAUAAAAAN0RuaBLlZpuCVHX7mtWeVDobCCa"></div>-->
+                        <br>
+                        <div class="center-align">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <form class="col s12" method="post" action="{% url 'login'  %}">
+                        {% csrf_token %}
+                        {% include 'form_snippet.html' with form=form %}
+                        <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+                        <!--<div class="g-recaptcha" data-sitekey="6LfaIUAUAAAAAN0RuaBLlZpuCVHX7mtWeVDobCCa"></div>-->
+                        <br>
+                        <div class="center-align">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+            <div class="section">
+                <h6>New User? <a href="{% url 'signup' %}">Signup</a></h6>
+            </div>
+            <div class="section">
+                <h6>Forgot Password? <a href="{% url 'password_reset_form' %}">Reset Password</a></h6>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

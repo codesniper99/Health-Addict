@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="section">
+            <h5 class="center-align grey-text text-darken-1">Complete your Profile</h5>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <ul class="progressbar">
+                <li class="active" style="width:20%;">User</li>
+                <li style="width:20%;">Profile</li>
+                <li style="width:20%;">Skills</li>
+                <li style="width:20%;">Account</li>
+                <li style="width:20%;">Connect Social</li>
+            </ul>
+        </div>
+        <div class="row" style="margin-top:10%;">
+            <form class="col s12" method="post" enctype="multipart/form-data" action="{% url 'signup_submen_profile' %}">
+                {% csrf_token %}
+                {% if profileform.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p style="color:red;" class="error-message">{{ error|escape }}</p>
+                    {% endfor %}
+                {% endif %}
+                <div class="row">
+                    <div class="col s4 offset-s1">
+                        <img src="{{ user.profile_picture.url }}" width="170" style="margin-left:25%;">
+                        <br>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>File</span>
+                                <input id="id_profile_picture" name="profile_picture" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" name="profile_pic"
+                                       placeholder="Upload a profile picture" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6 offset-s1">
+                        <div class="row input-field">
+                            {{ profileform.bio.label_tag }}
+                            {{ profileform.bio }}
+                        </div>
+                        <br>
+                        <div class="row input-field">
+                            <input id="id_date_of_birth" name="date_of_birth" type="text" class="datepicker">
+                            <label for="id_date_of_birth">Date of Birth</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="center-align">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                            Next<i class="material-icons right">keyboard_arrow_right</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--<div class="section">-->
+            <!--<h6>Already a user? <a href="{% url 'login' %}">Login</a></h6>-->
+        <!--</div>-->
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('textarea#id_bio').characterCounter();
+            $('.datepicker').datepicker({
+                format:'yyyy-mm-dd',
+                yearRange:40,
+                showMonthAfterYear:true,
+                showDaysInNextAndPreviousMonths:true,
+                showClearBtn:true,
+                defaultDate:'1980-01-01',
+            });
+            {% if request.user.date_of_birth %}
+                var elem = document.querySelector('.datepicker');
+                var instance = M.Datepicker.getInstance(elem);
+                instance.setDate(new Date("{{ request.user.date_of_birth|date:'Y-m-d' }}"));
+                instance.gotoDate(new Date("{{ request.user.date_of_birth|date:'Y-m-d' }}"));
+                d = document.getElementById('id_date_of_birth');
+                d.value = "{{ request.user.date_of_birth|date:'Y-m-d' }}";
+            {% endif %}
+        });
+    </script>
+
+{% endblock %}

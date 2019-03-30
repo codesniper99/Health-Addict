@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="container">
+        <br><br><br><br>
+        <h4 align="center">404 Page Not Found</h4>
+        <br><br>
+        <p style="text-align: center; color: #2b2b2b;">
+            You will be redirected in <time><b id="seconds">5</b> seconds</time>.
+        </p>
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+    <script type="text/javascript">
+        var el = document.getElementById('seconds'),
+        total = el.innerHTML,
+        timeinterval = setInterval(function () {
+            total = --total;
+            window.requestAnimationFrame(function () {
+                el.textContent = total;
+                if (total <= 0) {
+                    clearInterval(timeinterval);
+                    window.location.replace("{% url 'home' %}");
+                }
+            });
+        }, 1000);
+    </script>
+
+{% endblock %}

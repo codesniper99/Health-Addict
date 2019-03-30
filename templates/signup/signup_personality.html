@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="section">
+            <h5 class="center-align grey-text text-darken-1">Complete your profile</h5>
+        </div>
+        <div class="divider"></div>
+        <br>
+        <nav class="transparent z-depth-0">
+            <a href="{% url 'signup_user' usertype=user.user_type %}" class="breadcrumb grey-text">User</a>
+            <a href="{% url 'signup_profile' %}" class="breadcrumb grey-text">Profile</a>
+            <a href="{% url 'signup_academic' %}" class="breadcrumb grey-text">Academic Details</a>
+            <a href="{% url 'signup_personality' %}" class="breadcrumb active grey-text">Personality Test</a>
+        </nav>
+        <br><br>
+        <div class="row">
+            <p> <a href="{% url 'test_personality' %}">Take the test</a>
+            </p>
+            <br><br>
+                <div class="center-align">
+                    <a class="btn waves-effect waves-light" href="{% url 'signup_academic' %}" style="margin-right:10px;">
+                        Back<i class="material-icons left">keyboard_arrow_left</i>
+                    </a>
+                    <a class="btn waves-effect waves-light" href="{% url 'signup_iq' %}" style="margin-right:10px;">
+                        Next<i class="material-icons right">keyboard_arrow_right</i>
+                    </a>
+                </div>
+        </div>
+        <div class="section">
+            <h6>Already a user? <a href="{% url 'login' %}">Login</a></h6>
+        </div>
+    </div>
+
+{% endblock %}

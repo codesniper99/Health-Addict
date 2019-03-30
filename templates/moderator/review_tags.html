@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="row">
+            <div class="section">
+                <h5 class="grey-text text-darken-2">Review Tags</h5>
+            </div>
+            <div class="divider"></div>
+        </div>
+        <div class="row">
+            {% for tag in tags %}
+                <div class="col s3">
+                    <div class="card-panel tag-card-item">
+                        <div class="right hidden-close-icon">
+                            <i class="material-icons red-text">cancel</i>
+                        </div>
+                        <div>
+                            <span class="blue-text" style="padding:2%;">{{ tag.tag_name }}</span>
+                            <span class="grey-text" style="margin-left:5px;">x{{ tag.get_tag_count }}</span>
+                        </div>
+                        <div>
+                            <small>
+                                <span class="grey-text text-darken-1" style="margin-right:5px;">created</span>
+                                {{ tag.created_at|naturaltime }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block custom_script %}
+
+{% endblock %}
